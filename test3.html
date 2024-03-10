@@ -1,0 +1,68 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>平面圖</title>
+    <style>
+        body {
+            background-color: #FFFFFF; /* 設定背景顏色為淺藍色 */
+            margin: 0; /* 清除預設的body外邊距 */
+            padding: 0; /* 清除預設的body內邊距 */
+            font-family: Arial, sans-serif; /* 設定字體 */
+        }
+
+        h1 {
+            text-align: center; /* 標題置中 */
+            margin: 20px 0; /* 上下邊距 */
+        }
+
+        img {
+            max-width: 100%; /* 圖片最大寬度為其容器的100% */
+            height: auto; /* 讓高度自適應，保持寬高比 */
+            display: block; /* 將圖片轉換為塊級元素，以便居中 */
+            margin: 0 auto; /* 左右外邊距為auto，實現水平居中 */
+        }
+
+        map {
+            display: block; /* 讓map元素轉換為塊級元素，以避免水平滾動條出現 */
+            margin: 0 auto; /* 左右外邊距為auto，實現水平居中 */
+        }
+
+        area {
+            outline: none; /* 移除區域的默認輪廓效果 */
+        }
+
+        @media screen and (max-width: 768px) {
+            img {
+                max-width: 80%; /* 在小尺寸螢幕上，圖片最大寬度為其容器的80% */
+            }
+        }
+    </style>
+</head>
+<body>
+    <h1>台北101 B1平面圖(例)</h1>
+    <div style="text-align: center;">
+        <img src="demo2.png" alt="圖片描述" usemap="#image-map">
+    </div>
+
+    <map name="image-map">
+        <!-- 第一个鏈接區域 -->
+        <area shape="rect" coords="105,250,190,330" href="https://www.emporio-armani.com.tw/" alt="ARMANI">
+        <area shape="rect" coords="105,420,190,520" href="https://consumer.huawei.com/tw/phones/" alt="HUAWEI">
+		<area shape="rect" coords="105,600,190,700" href="https://www.adidas.com.tw/" alt="adidas">
+        <area shape="rect" coords="105,790,190,900" href="https://taiwan.coach.com/" alt="COACH">
+        <!-- 第二个鏈接區域 -->
+		<area shape="rect" coords="170,1180,340,1120" href="https://www.levis.com.tw/" alt="LEVIS">
+		<area shape="rect" coords="250,1180,515,1120" href="https://www.apple.com/tw/" alt="APPLE">
+
+        <area shape="rect" coords="580,330,665,440" href="https://www.mi.com/tw/" alt="MI">
+        <area shape="rect" coords="580,500,665,610" href="https://www.starbucks.com.tw/home/index.jspx?r=69" alt="STARBUCKS">
+		<area shape="rect" coords="580,720,665,820" href="https://promotion.twsamsungcampaign.com/" alt="samsung">
+		<area shape="rect" coords="580,900,665,1000" href="https://tw.louisvuitton.com/zht-tw/homepage" alt="LV">
+
+		<area shape="rect" coords="255,30,335,170" href="https://www.nike.com/tw/" alt="NIKE">
+		<area shape="rect" coords="430,30,510,170" href="https://www.gucci.com/hk/zh_hk/" alt="GUCCI">
+    </map>
+</body>
+</html>
