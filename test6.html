@@ -36,6 +36,18 @@
             cursor: pointer;
         }
 
+        a {
+            position: relative;
+            left: 50%; /* 將連結左側設置到父容器的50%位置 */
+            transform: translateX(-50%); /* 使連結水平居中 */
+            display: inline-block; /* 使連結以區塊元素方式顯示 */
+            padding: 10px 20px;
+            background-color: #3498db;
+            color: #fff;
+            text-decoration: none;
+            border-radius: 5px;
+        }
+
         #red-dot {
             position: absolute;
             background-color: red;
