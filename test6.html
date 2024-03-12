@@ -1,0 +1,101 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>平面圖</title>
+    <style>
+        body {
+            background-color: #FFFFFF;
+            margin: 0;
+            padding: 0;
+            font-family: Arial, sans-serif;
+        }
+
+        h1 {
+            text-align: center;
+            margin: 20px 0;
+        }
+
+        img {
+            position: relative;
+            width: 100%;
+            max-width: 100%;
+            height: auto;
+            display: block;
+            margin: 0 auto;
+        }
+
+        map {
+            display: block;
+            margin: 0 auto;
+        }
+
+        area {
+            outline: none;
+            cursor: pointer;
+        }
+
+        #red-dot {
+            position: absolute;
+            background-color: red;
+            width: 15px;
+            height: 15px;
+            border-radius: 50%;
+            transform: translate(-50%, -50%);
+            pointer-events: none;
+        }
+
+        @media only screen and (min-width: 600px) {/* 適用於寬度大於等於 600px 的螢幕 */
+            img {
+                max-width: 50%;
+            }
+        }
+
+        @media screen and (max-width: 768px) {
+            img {
+                max-width: 80%;/* 在小尺寸螢幕上，圖片最大寬度為其容器的80% */
+            }
+        }
+    </style>
+</head>
+<body>
+    <h1>台北101 B1平面圖(例)</h1>
+    <div style="text-align: center; position: relative;">
+        <img src="demo2.png" alt="圖片描述" usemap="#image-map">
+        <div id="red-dot" style="left: 700px; top: 1020px;"></div>
+    </div>
+
+    <map name="image-map">
+        <!-- 第一个鏈接區域 -->
+        <area shape="rect" coords="150,290,225,330" href="https://www.emporio-armani.com.tw/" alt="ARMANI" data-coords="560,280">
+        <area shape="rect" coords="150,470,225,520" href="https://consumer.huawei.com/tw/phones/" alt="HUAWEI" data-coords="560,450">
+        <area shape="rect" coords="150,650,225,700" href="https://www.adidas.com.tw/" alt="adidas" data-coords="560,630">
+        <area shape="rect" coords="150,845,225,900" href="https://taiwan.coach.com/" alt="COACH" data-coords="560,815">
+        <!-- 第二个鏈接區域 -->
+        <area shape="rect" coords="255,1150,425,1080" href="https://www.levis.com.tw/" alt="LEVIS" data-coords="535,1020">
+        <area shape="rect" coords="382.5,1150,647.5,1080" href="https://www.apple.com/tw/" alt="APPLE" data-coords="700,1020">
+
+        <area shape="rect" coords="622.5,385,707.5,495" href="https://www.mi.com/tw/" alt="MI" data-coords="835,400">
+        <area shape="rect" coords="622.5,555,707.5,665" href="https://www.starbucks.com.tw/home/index.jspx?r=69" alt="STARBUCKS" data-coords="835,580">
+        <area shape="rect" coords="622.5,770,707.5,880" href="https://promotion.twsamsungcampaign.com/" alt="samsung" data-coords="835,760">
+        <area shape="rect" coords="622.5,950,707.5,1060" href="https://tw.louisvuitton.com/zht-tw/homepage" alt="LV" data-coords="835,940">
+
+        <area shape="rect" coords="295,100,375,240" href="https://www.nike.com/tw/" alt="NIKE" data-coords="640,220">
+        <area shape="rect" coords="470,100,550,240" href="https://www.gucci.com/hk/zh_hk/" alt="GUCCI" data-coords="810,220">
+    </map>
+
+    <script>
+        var redDot = document.getElementById('red-dot');
+        var areas = document.querySelectorAll('area');
+
+        areas.forEach(function(area) {
+            area.addEventListener('click', function() {
+                var coords = this.dataset.coords.split(',');
+                redDot.style.left = coords[0] + 'px';
+                redDot.style.top = coords[1] + 'px';
+            });
+        });
+    </script>
+</body>
+</html>
