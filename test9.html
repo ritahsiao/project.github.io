@@ -1,0 +1,146 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>平面圖</title>
+    <style>
+        body {
+            background-color: #FFFFFF;
+            margin: 0;
+            padding: 0;
+            font-family: Arial, sans-serif;
+        }
+
+        h1 {
+            text-align: center;
+            margin: 20px 0;
+        }
+
+        img {
+            position: relative;
+            width: 100%;
+            max-width: 100%;
+            height: auto;
+            display: block;
+            margin: 0 auto;
+        }
+
+        map {
+            display: block;
+            margin: 0 auto;
+        }
+
+        area {
+            outline: none;
+            cursor: pointer;
+        }
+
+        a {
+            position: relative;
+            left: 50%;
+            transform: translateX(-50%);
+            display: inline-block;
+            padding: 10px 20px;
+            background-color: #3498db;
+            color: #fff;
+            text-decoration: none;
+            border-radius: 5px;
+        }
+
+        .red-dot {
+            position: absolute;
+            background-color: red;
+            width: 10px;
+            height: 10px;
+            border-radius: 50%;
+            pointer-events: none;
+        }
+
+        @media only screen and (min-width: 600px) {
+            img {
+                max-width: 50%;
+            }
+        }
+
+        @media screen and (max-width: 768px) {
+            img {
+                max-width: 80%;
+            }
+        }
+
+        #coordinates-input {
+            margin-top: 10px;
+            text-align: center;
+        }
+
+        #move-button {
+            margin-top: 10px;
+            display: block;
+            margin: 0 auto;
+        }
+    </style>
+</head>
+<body>
+    <h1>台北101 B1平面圖(例)</h1>
+    <div style="text-align: center; position: relative;">
+        <img src="demo2.png" alt="圖片描述" usemap="#image-map">
+        <div class="red-dot" id="red-dot" style="left: var(--red-dot-left, 700px); top: var(--red-dot-top, 1020px);"></div>
+    </div>
+
+    <div id="coordinates-input">
+        <label for="x-coordinate">X座標：</label>
+        <input type="text" id="x-coordinate" placeholder="輸入X座標">
+        <br> 
+        <label for="y-coordinate">Y座標：</label>
+        <input type="text" id="y-coordinate" placeholder="輸入Y座標">
+        <br>
+        <button id="move-button">移動紅點</button>
+    </div>
+
+    <map name="image-map">
+    <!-- 第一个鏈接區域 -->
+        <area id="armaini" shape="rect" coords="80,250,190,330" href="https://www.emporio-armani.com.tw/" alt="ARMANI" >
+        <area id="huawei" shape="rect" coords="80,420,190,520" href="https://consumer.huawei.com/tw/phones/" alt="HUAWEI" >
+        <area id="adidas" shape="rect" coords="80,600,190,700" href="https://www.adidas.com.tw/" alt="adidas" >
+        <area id="coach" shape="rect" coords="80,790,190,900" href="https://taiwan.coach.com/" alt="COACH" >
+        <!-- 第二个鏈接區域 -->
+        <area id="levis" shape="rect" coords="150,1180,340,1080" href="https://www.levis.com.tw/" alt="LEVIS" >
+        <area id="apple" shape="rect" coords="250,1180,515,1080" href="https://www.apple.com/tw/" alt="APPLE" >
+
+        <area id="mi" shape="rect" coords="580,330,665,440" href="https://www.mi.com/tw/" alt="MI" >
+        <area id="starbucks" shape="rect" coords="580,500,665,610" href="https://www.starbucks.com.tw/home/index.jspx?r=69" alt="STARBUCKS" >
+        <area id="samsung" shape="rect" coords="580,720,665,820" href="https://promotion.twsamsungcampaign.com/" alt="samsung" >
+        <area id="lv" shape="rect" coords="580,900,665,1000" href="https://tw.louisvuitton.com/zht-tw/homepage" alt="LV" >
+
+        <area id="nike" shape="rect" coords="295,100,375,240" href="https://www.nike.com/tw/" alt="NIKE" >
+        <area id="gucci" shape="rect" coords="470,100,550,240" href="https://www.gucci.com/hk/zh_hk/" alt="GUCCI" >
+    </map>
+    <script>
+    var redDot = document.getElementById('red-dot');
+    var moveButton = document.getElementById('move-button');
+    var xInput = document.getElementById('x-coordinate');
+    var yInput = document.getElementById('y-coordinate');
+
+    // 定義圖片的四個邊界座標
+    var minX = 370;
+    var minY = 20;
+    var maxX = 1025;
+    var maxY = 1215;
+
+    moveButton.addEventListener('click', function() {
+        var x = parseFloat(xInput.value);
+        var y = parseFloat(yInput.value);
+
+        // 檢查極限值
+        if (!isNaN(x) && !isNaN(y) && x >= minX && x <= maxX && y >= minY && y <= maxY) {
+            redDot.style.setProperty('--red-dot-left', x + 'px');
+            redDot.style.setProperty('--red-dot-top', y + 'px');
+        } else {
+            alert('請輸入有效的座標值，且在指定範圍內。');
+        }
+    });
+    </script>
+
+</body>
+</html>
