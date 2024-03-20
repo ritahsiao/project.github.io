@@ -1,0 +1,184 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>圖片與超連結</title>
+<style>
+        body, html {
+            height: 100%;
+            margin: 0;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+        }
+
+        .image-container {
+            text-align: center;
+            position: absolute;
+            cursor: move;
+        }
+
+        .image-container img {
+            width: 50%; /* 調整為 20% 寬度 */
+            height: auto;
+        }
+
+        map {
+                    display: block;
+                    margin: 0 auto;
+            }
+
+    area {
+            outline: none;
+            cursor: pointer;
+         }
+
+
+     /*   .red-dot {
+            position: absolute;
+            background-color: red;
+            width: 1vw;
+            height: 1vw;
+            border-radius: 50%;
+            pointer-events: none;
+            left: 53%;
+            top: 82%;
+            transform: translate(-50%, -50%);
+        }  
+
+        #coordinates-input {
+            margin-top: 10px;
+            text-align: center;
+        }
+
+        #coordinates-input {
+            position: absolute;
+            bottom: 20px;
+            left: 50%;
+            transform: translateX(-50%);
+        }
+
+        #move-button {
+            margin-top: 10px;
+            display: block;
+            margin: 0 auto;
+        }
+
+*/
+
+</style>
+</head>
+<body>
+
+<h1>台北101 B1平面圖(例)</h1>
+    <div class="image-container">
+        <img src="demo5.png" alt="圖片描述" usemap="#image-map">
+        <div class="red-dot" id="red-dot"></div>
+    </div>
+<!--
+    <div id="coordinates-input">
+        <label for="x-coordinate">X座標：</label>
+        <input type="text" id="x-coordinate" placeholder="輸入X座標">
+        <br>
+        <label for="y-coordinate">Y座標：</label>
+        <input type="text" id="y-coordinate" placeholder="輸入Y座標">
+        <br>
+        <button id="move-button">移動紅點</button>
+    </div>
+-->
+
+<div class="image-container" style="top: 140px; left: 510px;" draggable="true" ondragstart="drag(event)">
+  <a href="https://www.emporio-armani.com.tw/">
+    <img src="armani1.jpg" alt="armani">
+  </a>
+</div>
+
+<div class="image-container" style="top: 220px; left: 510px;" draggable="true" ondragstart="drag(event)">
+  <a href="https://consumer.huawei.com/tw/phones/">
+    <img src="huawei1.jpg" alt="huawei">
+  </a>
+</div>
+
+<div class="image-container" style="top: 300px; left: 510px;" draggable="true" ondragstart="drag(event)">
+  <a href="https://www.adidas.com.tw/">
+    <img src="adidas1.jpg" alt="adidas">
+  </a>
+</div>
+
+<div class="image-container" style="top: 380px; left: 510px;" draggable="true" ondragstart="drag(event)">
+  <a href="https://taiwan.coach.com/">
+    <img src="coach1.jpg" alt="coach">
+  </a>
+</div>
+
+<div class="image-container" style="top: 560px; left: 590px;" draggable="true" ondragstart="drag(event)">
+  <a href="https://www.levis.com.tw/">
+    <img src="levis1.jpg" alt="levis">
+  </a>
+</div>
+
+<div class="image-container" style="top: 560px; left: 670px;" draggable="true" ondragstart="drag(event)">
+  <a href="https://www.apple.com/tw/">
+    <img src="apple1.jpg" alt="apple">
+  </a>
+</div>
+
+<div class="image-container" style="top: 200px; left: 750px;" draggable="true" ondragstart="drag(event)">
+  <a href="https://www.mi.com/tw/">
+    <img src="mi1.jpg" alt="mi">
+  </a>
+</div>
+
+<div class="image-container" style="top: 290px; left: 750px;" draggable="true" ondragstart="drag(event)">
+  <a href="https://www.starbucks.com.tw/home/index.jspx?r=69">
+    <img src="starbucks1.jpg" alt="starbucks">
+  </a>
+</div>
+
+<div class="image-container" style="top: 380px; left: 753px;" draggable="true" ondragstart="drag(event)">
+  <a href="https://promotion.twsamsungcampaign.com/">
+    <img src="samsung1.jpg" alt="samsung">
+  </a>
+</div>
+
+<div class="image-container" style="top: 470px; left: 750px;" draggable="true" ondragstart="drag(event)">
+  <a href="https://tw.louisvuitton.com/zht-tw/homepage">
+    <img src="lv1.jpg" alt="lv">
+  </a>
+</div>
+
+<div class="image-container" style="top: 30px; left: 620px;" draggable="true" ondragstart="drag(event)">
+  <a href="https://www.nike.com/tw/">
+    <img src="nike1.jpg" alt="nike">
+  </a>
+</div>
+
+<div class="image-container" style="top: 30px; left: 700px;" draggable="true" ondragstart="drag(event)">
+  <a href="https://www.gucci.com/hk/zh_hk/">
+    <img src="gucci1.jpg" alt="gucci">
+  </a>
+</div>
+
+<script>
+  function drag(event) {
+    event.dataTransfer.setData("text", event.target.id);
+  }
+
+  document.addEventListener("dragover", function(event) {
+    event.preventDefault();
+  });
+
+  document.addEventListener("drop", function(event) {
+    event.preventDefault();
+    var data = event.dataTransfer.getData("text");
+    var draggedElement = document.getElementById(data);
+    var offsetX = event.clientX - draggedElement.clientWidth / 2;
+    var offsetY = event.clientY - draggedElement.clientHeight / 2;
+    draggedElement.style.left = offsetX + "px";
+    draggedElement.style.top = offsetY + "px";
+  });
+</script>
+
+</body>
+</html>
