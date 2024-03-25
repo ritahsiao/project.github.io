@@ -1,0 +1,227 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title> 平面圖</title>
+<style>
+    body, html {
+        height: 200%;
+        margin: 0;
+        display: flex;
+        justify-content: center;
+        align-items: center;
+    }
+
+   /* h1 {
+            text-align: center;
+            height: 33%;
+        }*/
+
+    .container {
+        width:auto;
+        height:auto;
+        position: relative;
+    }
+
+    .base-image {
+        width: 100%; /* 或者根據需要設置具體的寬度 */
+        height: auto; /* 讓圖片按比例縮放 */
+    }
+
+    .overlay {
+        position: absolute;
+        top: 46%; /* 將其設置為底圖的正下方，再上移30% */
+        left: 16%;
+        transform: translate(-50%, -50%);
+    }
+
+    .overlay111 {
+        position: absolute;
+        top: 46%; /* 將其設置為底圖的正下方，再上移30% */
+        left: 85%;
+        transform: translate(-50%, -50%);
+    }
+
+    .overlay22 {
+        position: absolute;
+        top: 9%; /* 將其設置為底圖的正下方，再上移30% */
+        left: 44%;
+        transform: translate(-50%, -50%);
+    }
+
+    .overlay33 {
+        position: absolute;
+        top: 84%; /* 將其設置為底圖的正下方，再上移30% */
+        left: 33%;
+        transform: translate(-50%, -50%);
+    }
+
+    .overlay44 {
+        position: absolute;
+        top: 9%; /* 將其設置為底圖的正下方，再上移30% */
+        left: 64%;
+        transform: translate(-50%, -50%);
+    }
+
+    .overlay55 {
+        position: absolute;
+        top: 84%; /* 將其設置為底圖的正下方，再上移30% */
+        left: 54%;
+        transform: translate(-50%, -50%);
+    }    
+
+
+    /* 新增的超連結圖片樣式 */
+    .image-container {
+        margin-top: 20px; /* 垂直間距 */
+    }
+
+    .red-dot {
+            position: absolute;
+            background-color: red;
+            width: 1vw;
+            height: 1vw;
+            border-radius: 50%;
+            pointer-events: none;
+            left: 54%;
+            top: 75%;
+            transform: translate(-50%, -50%);
+        }
+
+        #coordinates-input {
+            margin-top: 10px;
+            text-align: center;
+        }
+
+        #move-button {
+            margin-top: 10px;
+            display: block;
+            margin: 0 auto;
+        }
+
+   @media (max-width: 425px) {
+    /* 這裡寫入手機設備的 CSS 樣式 */
+    .image-container img {
+        width: 50%;
+    }
+    
+}
+
+</style>
+</head>
+<body>
+
+<div class="container">
+    <img class="base-image" src="demo5.png" alt="底圖">
+    <div class="red-dot" id="red-dot"></div>
+
+    <div id="coordinates-input">
+        <label for="x-coordinate">X座標：</label>
+        <input type="text" id="x-coordinate" placeholder="輸入X座標">
+        <br>
+        <label for="y-coordinate">Y座標：</label>
+        <input type="text" id="y-coordinate" placeholder="輸入Y座標">
+        <br>
+        <button id="move-button">移動紅點</button>
+    </div>
+
+    <!-- 在底圖下方放置其他元素 -->
+    <div class="overlay">
+        <a href="https://www.emporio-armani.com.tw/">
+                <img src="armani1.jpg" alt="armani">
+        </a>
+        <!-- 新增的超連結圖片 -->
+        <div class="image-container">
+            <a href="https://consumer.huawei.com/tw/phones/">
+                <img src="huawei1.jpg" alt="huawei">
+            </a>
+        </div>
+        
+        <div class="image-container">
+            <a href="ttps://www.adidas.com.tw/">
+                <img src="adidas1.jpg" alt="adidas">
+            </a>
+        </div>
+
+        <div class="image-container">
+            <a href="https://taiwan.coach.com/">
+                <img src="coach1.jpg" alt="coach">
+            </a>
+        </div>
+    </div>
+
+    <div class="overlay22">
+            <a href="https://www.nike.com/tw/">
+                <img src="nike1.jpg" alt="nike">
+            </a>
+    </div>
+    <div class="overlay44">
+            <a href="https://www.gucci.com/hk/zh_hk/">
+                <img src="gucci1.jpg" alt="gucci">
+            </a>
+        
+    </div>   
+
+    <div class="overlay111">
+        <a href="https://www.mi.com/tw/">
+            <img src="mi1.jpg" alt="mi">
+        </a>
+
+        <div class="image-container">
+            <a href="https://www.starbucks.com.tw/home/index.jspx?r=69">
+                <img src="starbucks1.jpg" alt="starbucks">
+            </a>
+        </div>
+
+        <div class="image-container">
+            <a href="https://promotion.twsamsungcampaign.com/">
+                <img src="samsung1.jpg" alt="samsung">
+            </a>
+        </div>
+
+        <div class="image-container" >
+            <a href="https://tw.louisvuitton.com/zht-tw/homepage">
+                <img src="lv1.jpg" alt="lv">
+            </a>
+        </div>
+    </div>
+    <div class="overlay33">
+        <a href="https://www.apple.com/tw/">
+                <img src="apple1.jpg" alt="apple">
+            </a>
+    </div>
+    <div class="overlay55">
+        <a href="https://www.levis.com.tw/">
+                <img src="levis1.jpg" alt="levis">
+            </a>
+    </div>
+        
+</div>
+<script>
+        var redDot = document.getElementById('red-dot');
+        var moveButton = document.getElementById('move-button');
+        var xInput = document.getElementById('x-coordinate');
+        var yInput = document.getElementById('y-coordinate');
+
+        // 獲取視口大小
+        var viewportWidth = window.innerWidth || document.documentElement.clientWidth;
+        var viewportHeight = window.innerHeight || document.documentElement.clientHeight;
+
+        moveButton.addEventListener('click', function() {
+            var x = parseFloat(xInput.value);
+            var y = parseFloat(yInput.value);
+
+            // 檢查極限值
+            if (!isNaN(x) && !isNaN(y) && x >= 0 && x <= 100 && y >= 0 && y <= 100) {
+                // 使用vw和vh單位設置紅點位置
+                redDot.style.left = x + '%';
+                redDot.style.top = y + '%';
+            } else {
+                alert('請輸入有效的座標值(0-100)。');
+            }
+        });
+</script>
+
+</body>
+</html>
