@@ -1,0 +1,194 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title> 平面圖</title>
+<style>
+    body, html {
+        height: 200%;
+        margin: 0;
+        display: flex;
+        justify-content: center;
+        align-items: center;
+    }
+
+   /* h1 {
+            text-align: center;
+            height: 33%;
+        }*/
+
+    .container {
+        width:auto;
+        height:auto;
+        position: relative;
+    }
+
+    .base-image {
+        width: 100%; /* 或者根據需要設置具體的寬度 */
+        height: auto; /* 讓圖片按比例縮放 */
+    }
+    .overlay{
+        position: absolute;
+        top: 13%; /* 將其設置為底圖的正下方，再上移30% */
+        left: 30%;
+        transform: translate(-50%, -50%);
+    }
+
+    
+    .overlay11{
+        position: absolute;
+        top: 13%; /* 將其設置為底圖的正下方，再上移30% */
+        left: 50%;
+        transform: translate(-50%, -50%);
+    }
+
+    .overlay22{
+        position: absolute;
+        top: 13%; /* 將其設置為底圖的正下方，再上移30% */
+        left: 70%;
+        transform: translate(-50%, -50%);
+    }
+
+
+    /* 新增的超連結圖片樣式 */
+    .image-container {
+        margin-top: 20px; /* 垂直間距 */
+    }
+
+    .red-dot {
+            position: absolute;
+            pointer-events: none; /* 保持不可點擊 */
+            width: 70px;
+            height: 70px;
+            left: 13%;
+            top: 75%;
+            transform: translate(-50%, -50%);
+    }
+
+        #coordinates-input {
+            margin-top: 10px;
+            text-align: center;
+        }
+
+        #move-button {
+            margin-top: 10px;
+            display: block;
+            margin: 0 auto;
+        }
+
+        #position-list {
+            margin-top: 10px;
+            text-align: left;
+        }
+
+        #position-list div {
+             width: 150px; /* 設置固定寬度 */
+             margin-bottom: 5px; /* 添加文本間距 */
+        }
+
+
+    @media (max-width: 425px) {
+    .base-image, .image-container img {
+        width: 50%; /* 調整圖片寬度為螢幕寬度的一半 */
+        height: auto;
+        }
+    }
+        
+}
+
+</style>
+</head>
+<body>
+<body bgcolor="#FFFFF0">
+<div class="container">
+    <img class="base-image" src="demo11.png" alt="底圖">
+    <img src="dog.png" id="red-dot" class="red-dot">
+
+    <div id="coordinates-input">
+        <label for="x-coordinate">X座標：</label>
+        <input type="text" id="x-coordinate" placeholder="輸入X座標">
+        <br>
+        <label for="y-coordinate">Y座標：</label>
+        <input type="text" id="y-coordinate" placeholder="輸入Y座標">
+        <br>
+        <button id="move-button">移動狗狗</button>
+        
+    </div>
+
+   
+    <!-- 在底圖下方放置其他元素 -->
+  
+    <div class="overlay">
+            <a href="https://rog.asus.com/tw/">
+                <img src="rog.png" alt="ROG">
+            </a>
+    </div>
+    <div class="overlay11">
+            <a href="https://www.aorus.com/zh-tw">
+                <img src="aorus.png" alt="aorus">
+            </a>
+        
+    </div>   
+    <div class="overlay22">
+            <a href="https://tw.msi.com/index.php">
+                <img src="msi.png" alt="msi">
+            </a>
+        
+    </div> 
+           
+</div>
+
+<div id="position-list" style="display: flex; flex-direction: column; align-items: flex-start;">
+    <h3>移動紀錄</h3>
+    <div id="positions" style="display: flex; flex-direction: column;"></div>
+    <p id="position-count">移動次數: 0</p>
+</div>
+
+
+<script>
+        var redDot = document.getElementById('red-dot');
+        var moveButton = document.getElementById('move-button');
+        var xInput = document.getElementById('x-coordinate');
+        var yInput = document.getElementById('y-coordinate');
+        var positionList = document.getElementById('positions');
+        var positionCount = document.getElementById('position-count');
+        var positions = [];
+        var count = 0;
+
+        var viewportWidth = window.innerWidth || document.documentElement.clientWidth;
+        var viewportHeight = window.innerHeight || document.documentElement.clientHeight;
+
+        moveButton.addEventListener('click', function() {
+            var x = parseFloat(xInput.value);
+            var y = parseFloat(yInput.value);
+
+            if (!isNaN(x) && !isNaN(y) && x >= 4 && x <= 98 && y >= 6 && y <= 93) {
+                redDot.style.left = x + '%';
+                redDot.style.top = y + '%';
+                count++;
+                positions.push({x: x, y: y});
+                updatePositionList();
+                updateCount();
+            } else {
+                alert('請輸入有效的座標值(x:4-98 y:6-93)。');
+            }
+        });
+
+        function updatePositionList() {
+            positionList.innerHTML = '';
+            positions.forEach(function(position) {
+                var listItem = document.createElement('div');
+                
+                listItem.textContent = '(' + position.x + ' , ' + position.y + ')';
+                positionList.appendChild(listItem);
+            });
+        }
+
+        function updateCount() {
+            positionCount.textContent = '移動次數: ' + count;
+        }
+</script>
+
+</body>
+</html>
